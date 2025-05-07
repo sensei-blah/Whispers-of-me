@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Whispers of Me</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #e0c3fc, #8ec5fc);
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .moon {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 3em;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .container {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+      font-weight: bold;
+      text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 30px;
+      padding: 15px 35px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 50px;
+      background-color: #ffffff;
+      color: #b388eb;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background-color: #f3e9ff;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .hidden-content {
+      display: none;
+      margin-top: 40px;
+      font-size: 1.2em;
+      color: #ffffff;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/fx0Y57y.png') repeat;
+      opacity: 0.1;
+      z-index: -1;
+      animation: moveStars 40s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from {background-position: 0 0;}
+      to {background-position: 1000px 1000px;}
+    }
+
+    .quote {
+      margin-top: 30px;
+      font-style: italic;
+      color: #fff9fb;
+      font-size: 1.3em;
+      min-height: 60px;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .butterfly {
+      position: absolute;
+      font-size: 1.5em;
+      animation: fly 10s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translate(-10%, 0);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(100vw, 100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(200vw, -50vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="moon">🌙</div>
+
+  <div class="container">
+    <h1>Whispers of Me</h1>
+    <button class="btn" onclick="reveal()">Tap to Enter My Dreamland</button>
+    
+    <div id="secret" class="hidden-content">
+      <p>I’m a soft soul stitched in poetry and pastel dreams.</p>
+      <p>Wanna know my world? It’s made of rainy playlists, late night thoughts, and silent strength.</p>
+      
+      <div class="quote" id="quoteBox">“Stars can’t shine without darkness.”</div>
+    </div>
+  </div>
+
+  <!-- Butterflies -->
+  <div class="butterfly" style="top: 20%; left: 5%;">🦋</div>
+  <div class="butterfly" style="top: 50%; left: 10%;">🦋</div>
+  <div class="butterfly" style="top: 80%; left: 2%;">🦋</div>
+
+  <script>
+    function reveal() {
+      document.getElementById("secret").style.display = "block";
+    }
+
+    const quotes = [
+      "“Stars can’t shine without darkness.”",
+      "“I collect moments, not things.”",
+      "“Some souls are made of stardust.”",
+      "“She lives in a sky full of poems.”"
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      const quoteBox = document.getElementById("quoteBox");
+      quoteBox.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % quotes.length;
+        quoteBox.textContent = quotes[index];
+        quoteBox.style.opacity = 1;
+      }, 1000);
+    }, 5000);
+  </script>
+</body>
+</html>
